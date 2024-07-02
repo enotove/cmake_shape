@@ -1,103 +1,14 @@
 #include <iostream>
 #include <string>
-
-class Figure
-{
-protected:
-    int corners;
-    std::string nameFigure;
-public:
-    Figure()
-    {
-        this->corners = 0;
-    }
-    std::string PringNameFigure() { return nameFigure; }
-    virtual std::string PrintSide() { return ""; }
-    virtual std::string PrintAngle() { return ""; }
-};
-class Triangle : public Figure
-{
-protected:
-
-
-    float a, b, c;
-    float A, B, C;
-public:
-    Triangle(float a, float b, float c, float A, float B, float C)
-    {
-        this->nameFigure = "Triangle";
-
-        this->a = a; this->b = b; this->c = c;
-        this->A = A; this->B = B; this->C = C;
-    }
-
-    std::string PrintSide() override
-    {
-        return "Side: a = " + std::to_string(a) + " b = " + std::to_string(b) + "  c = " + std::to_string(c);
-    }
-    std::string PrintAngle() override
-    {
-        return "Angle: a = " + std::to_string(A) + " B = " + std::to_string(B) + " C = " + std::to_string(C);
-    }
-};
-class Quadrilateral : public Figure
-{
-protected:
-
-    float a, b, c, d;
-    float A, B, C, D;
-public:
-    Quadrilateral(float a, float b, float c, float d, float A, float B, float C, float D)
-    {
-        this->nameFigure = "Quadrelaterial";
-        this->corners = 4;
-        this->a = a; this->b = b; this->c = c; this->d = d;
-        this->A = A; this->B = B; this->C = C; this->D = D;
-    }
-    std::string PrintSide() override
-    {
-        return "Side: a = " + std::to_string(a) + " b = " + std::to_string(b) + "  c = " + std::to_string(c) + " d = " + std::to_string(d);
-    }
-    std::string PrintAngle() override
-    {
-        return "Angle: a = " + std::to_string(A) + " B = " + std::to_string(B) + " C = " + std::to_string(C) + " D = " + std::to_string(D);
-    }
-};
-class RightAnglesTriangle : public Triangle
-{
-public:
-    RightAnglesTriangle(float a, float b, float c, float A, float B) : Triangle(a, b, c, A, B, 90) { this->nameFigure = "Right-angles Triangle"; }
-};
-class IsoscelesTriangle : public Triangle
-{
-public:
-    IsoscelesTriangle(float a, float b, float A, float B) : Triangle(a, b, a, A, B, A) { this->nameFigure = "Isosceles Triangle"; }
-};
-class EquilateralTriangle : public Triangle
-{
-public:
-    EquilateralTriangle(float a) : Triangle(a, a, a, 60, 60, 60) { this->nameFigure = "Equilateral Triangle"; }
-};
-class Rectangle : public Quadrilateral
-{
-public:
-    Rectangle(float a, float b) : Quadrilateral(a, b, a, b, 90, 90, 90, 90) { this->nameFigure = "Rectangle"; }
-};
-class Square : public Quadrilateral
-{
-public:
-    Square(float a) : Quadrilateral(a, a, a, a, 90, 90, 90, 90) { this->nameFigure = "Square"; }
-};
-class Parallelogram : public Quadrilateral
-{
-public:
-    Parallelogram(float a, float b, float A, float B) : Quadrilateral(a, b, a, b, A, B, A, B) { this->nameFigure = "Parallelogram"; }
-};
-class Rhomb : public Quadrilateral
-{
-public:
-    Rhomb(float a, float A, float B) : Quadrilateral(a, a, a, a, A, B, A, B) { this->nameFigure = "Rhomb"; }
-};
+#include "figure.h"
+#include "triangle.h"
+#include "rightAnglesTriangle.h"
+#include "isoscelesTriangle.h"
+#include "equilateralTriangle.h"
+#include "rectangle.h"
+#include "square.h"
+#include "parallelogram.h"
+#include "rhomb.h"
 
 void print_info(Figure& figure)
 {

@@ -1,3 +1,5 @@
 cmake_minimum_required(VERSION 3.22.0)
 project(cmake_shape)
-add_executable(shape source.cpp)
+set(SOURCES source.cpp "figure.cpp" "triangle.cpp" "quadrilateral.cpp")
+set(HEADERS "figure.h" "triangle.h"   "quadrilateral.h" "rightAnglesTriangle.h"   "isoscelesTriangle.h" "equilateralTriangle.h"   "rectangle.h" "square.h"   "parallelogram.h" "rhomb.h" )
+add_executable(shape  ${SOURCES} ${HEADERS})
